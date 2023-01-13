@@ -1,13 +1,11 @@
 from string import ascii_letters, digits
 
-from utils_customer import is_all_string_checks_valid as all_str, is_string_ascii
+from utils_customer import is_all_string_checks_valid as all_str
 
 """
 This module stores product information
 Some attributes are checked by methods from the module utils_customer
-- Название +
-- Описание +
-- Цена +
+
 - Оставшееся количество ????
 - Для товаров в заказе хранить: название и количество. ??????
 """
@@ -56,3 +54,6 @@ class Product:
 
 if __name__ == '__main__':
     prod1 = Product('Luk', 'prostoi, green luk', 30)
+    prod2 = Product('yuk_ 1', 'prostoi_ *StEp* green luk', 500)
+    prod3 = Product('kir1-1', 'prostoi, green // test // luk', 3000)
+
