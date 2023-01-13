@@ -1,17 +1,23 @@
+from string import ascii_letters, digits
+
+from utils_customer import is_all_string_checks_valid as all_str, is_string_ascii
+
 """
 This module stores product information
+Some attributes are checked by methods from the module utils_customer
 - Название +
 - Описание +
 - Цена +
 - Оставшееся количество ????
 - Для товаров в заказе хранить: название и количество. ??????
 """
+ALLOWED = ascii_letters + digits + ''
 
 
 class Product:
-    def __init__(self, name: str, specification: str, price: int):
+    def __init__(self, name: str, description: str, price: int):
         self.name = name
-        self.specification = specification
+        self.description = description
         self.price = price
 
     @property
@@ -20,15 +26,21 @@ class Product:
 
     @name.setter
     def name(self, name: str):
-        self.__name = name
+        if all_str(name):
+            self.__name = name
+        else:
+            raise ValueError(f'Only allowed in name: {ALLOWED}')
 
     @property
-    def specification(self):
-        return self.__specification
+    def description(self):
+        return self.__description
 
-    @specification.setter
-    def specification(self, specification: str):
-        self.__specification = specification
+    @description.setter
+    def description(self, description: str):
+        if len(description) > 2:
+            self.__description = description
+        else:
+            raise ValueError(f'len address < 3')
 
     @property
     def price(self):
@@ -36,4 +48,11 @@ class Product:
 
     @price.setter
     def price(self, price: int):
-        self.__price = price
+        if type(price) is int and price > 0:
+            self.__price = price
+        else:
+            raise ValueError(f'only target positive numbers are allowed')
+
+
+if __name__ == '__main__':
+    prod1 = Product('Luk', 'prostoi, green luk', 30)
