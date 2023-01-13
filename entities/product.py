@@ -11,7 +11,7 @@ Some attributes are checked by methods from the module utils_customer
 - Оставшееся количество ????
 - Для товаров в заказе хранить: название и количество. ??????
 """
-ALLOWED = ascii_letters + digits + ''
+ALLOWED = ascii_letters + digits + ' _-'
 
 
 class Product:
@@ -26,7 +26,7 @@ class Product:
 
     @name.setter
     def name(self, name: str):
-        if all_str(name):
+        if all_str(name, ALLOWED):
             self.__name = name
         else:
             raise ValueError(f'Only allowed in name: {ALLOWED}')
