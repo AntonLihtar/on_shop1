@@ -12,18 +12,25 @@ string checking --------------------------------
 """
 
 
-def is_string_ascii(value: str, allowed: str) -> bool:
-    return all(n in allowed for n in value)
+def validate_string_ascii(value: str, allowed: str):
+    if not all(n in allowed for n in value):
+        raise ValueError(f'Invalid string "{value}". Only allowed: {ALLOWED}')
 
 
-def is_string_1char_isalpha(value: str) -> bool:
-    return value[:1].isalpha()
+def validate_string_1char(value: str):
+    if not value[:1].isalpha():
+        raise ValueError(f'Invalid string "{value}". 1 character must be a letter')
 
 
-def is_all_string_checks_valid(value: str, allowed: str) -> bool:
-    return all([len(value) > 2,
-                is_string_ascii(value, allowed),
-                is_string_1char_isalpha(value)])
+def validate_len_string(value: str):
+    if len(value) < 3:
+        raise ValueError(f'Len {value} < 3')
+
+
+def validate_all_string_checks(value: str, allowed: str):
+    validate_string_ascii(value, allowed),
+    validate_len_string(value),
+    validate_string_1char(value)
 
 
 """
@@ -71,16 +78,17 @@ def is_correct_telephone(value: str) -> bool:
 
 
 if __name__ == '__main__':
-    assert is_all_string_checks_valid('Anton', ALLOWED) is True
-    assert is_all_string_checks_valid('Anto1', ALLOWED) is True
-    assert is_all_string_checks_valid('1nton', ALLOWED) is False
-    assert is_all_string_checks_valid('An.ton', ALLOWED) is False
-    assert is_all_string_checks_valid('Anton.', ALLOWED) is False
-    assert is_all_string_checks_valid('An*on', ALLOWED) is False
-    assert is_all_string_checks_valid('*Anton', ALLOWED) is False
-    assert is_all_string_checks_valid('Anton__', ALLOWED) is False
-    assert is_all_string_checks_valid('An', ALLOWED) is False
-    assert is_all_string_checks_valid('', ALLOWED) is False
+    assert validate_string_ascii('Anto1',ALLOWED) is True
+    assert validate_all_string_checks('Anton', ALLOWED)
+    assert validate_all_string_checks('Anto1', ALLOWED)
+    assert validate_all_string_checks('1nton', ALLOWED)
+    assert validate_all_string_checks('An.ton', ALLOWED)
+    assert validate_all_string_checks('Anton.', ALLOWED)
+    assert validate_all_string_checks('An*on', ALLOWED)
+    assert validate_all_string_checks('*Anton', ALLOWED)
+    assert validate_all_string_checks('Anton__', ALLOWED)
+    assert validate_all_string_checks('An', ALLOWED)
+    assert validate_all_string_checks('', ALLOWED)
 
     assert is_all_email_checks_valid('test@example.com', ALLOWED, EMAIL_ALLOWED) is True
     assert is_all_email_checks_valid('11@1.1', ALLOWED, EMAIL_ALLOWED) is True

@@ -27,10 +27,8 @@ class Customer:
 
     @name.setter
     def name(self, name: str):
-        if u_c.is_all_string_checks_valid(name, ALLOWED):
-            self._name = name
-        else:
-            raise ValueError(f'Only allowed in name: {ALLOWED}')
+        u_c.validate_all_string_checks(name, ALLOWED)
+        self._name = name
 
     @property
     def last_name(self):
@@ -38,10 +36,8 @@ class Customer:
 
     @last_name.setter
     def last_name(self, last_name: str):
-        if u_c.is_all_string_checks_valid(last_name, ALLOWED):
-            self._last_name = last_name
-        else:
-            raise ValueError(f'Only allowed in last_name: {ALLOWED}')
+        u_c.validate_all_string_checks(last_name, ALLOWED)
+        self._last_name = last_name
 
     @property
     def email(self):
@@ -82,10 +78,9 @@ class Customer:
 
     @address.setter
     def address(self, address: str):
-        if len(address) > 2 and u_c.is_string_ascii(address, ALLOWED):
-            self._address = address
-        else:
-            raise ValueError(f'len address < 3')
+        u_c.validate_string_ascii(address, ALLOWED)
+        u_c.validate_len_string(address)
+        self._address = address
 
 
 if __name__ == '__main__':
