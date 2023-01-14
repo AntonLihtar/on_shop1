@@ -1,6 +1,6 @@
 from string import ascii_letters, digits
 
-from utils_customer import is_all_string_checks_valid as all_str
+from utils_customer import validate_all_string_checks as all_str
 
 """
 This module stores product information

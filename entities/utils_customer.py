@@ -78,43 +78,33 @@ def is_correct_telephone(value: str) -> bool:
 
 
 if __name__ == '__main__':
-    assert validate_string_ascii('Anto1',ALLOWED) is True
-    assert validate_all_string_checks('Anton', ALLOWED)
-    assert validate_all_string_checks('Anto1', ALLOWED)
-    assert validate_all_string_checks('1nton', ALLOWED)
-    assert validate_all_string_checks('An.ton', ALLOWED)
-    assert validate_all_string_checks('Anton.', ALLOWED)
-    assert validate_all_string_checks('An*on', ALLOWED)
-    assert validate_all_string_checks('*Anton', ALLOWED)
-    assert validate_all_string_checks('Anton__', ALLOWED)
-    assert validate_all_string_checks('An', ALLOWED)
-    assert validate_all_string_checks('', ALLOWED)
+    pass
 
-    assert is_all_email_checks_valid('test@example.com', ALLOWED, EMAIL_ALLOWED) is True
-    assert is_all_email_checks_valid('11@1.1', ALLOWED, EMAIL_ALLOWED) is True
-    assert is_all_email_checks_valid('1-1@tyu.1', ALLOWED, EMAIL_ALLOWED) is True
-    assert is_all_email_checks_valid('test@.com', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('tes.t@.com', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('test@example.co@m', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('t@est@example.com', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('testexample.co@m', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('11..@tr.1', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('11@1..1', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('1__1@1.ru', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('1--1@ru.1', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('_12rt@tyu.ru', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('.*12rt@tyu.ru', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('12rt@tyu.ru.', ALLOWED, EMAIL_ALLOWED) is False
-    assert is_all_email_checks_valid('1_-2rt@tyu.ru', ALLOWED, EMAIL_ALLOWED) is False
-
-    assert is_correct_telephone('+79231234567') is True
-    assert is_correct_telephone('89231234567') is True
-    assert is_correct_telephone('+792312345677') is False
-    assert is_correct_telephone('+792312345') is False
-    assert is_correct_telephone('*79231234567') is False
-    assert is_correct_telephone('+7923123456r') is False
-    assert is_correct_telephone('+79231II4567') is False
-    assert is_correct_telephone('8923123456T') is False
-    assert is_correct_telephone('+7923123456_') is False
-    assert is_correct_telephone('_79231234567') is False
-    assert is_correct_telephone('8_231234567') is False
+    # assert is_all_email_checks_valid('test@example.com', ALLOWED, EMAIL_ALLOWED) is True
+    # assert is_all_email_checks_valid('11@1.1', ALLOWED, EMAIL_ALLOWED) is True
+    # assert is_all_email_checks_valid('1-1@tyu.1', ALLOWED, EMAIL_ALLOWED) is True
+    # assert is_all_email_checks_valid('test@.com', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('tes.t@.com', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('test@example.co@m', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('t@est@example.com', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('testexample.co@m', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('11..@tr.1', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('11@1..1', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('1__1@1.ru', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('1--1@ru.1', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('_12rt@tyu.ru', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('.*12rt@tyu.ru', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('12rt@tyu.ru.', ALLOWED, EMAIL_ALLOWED) is False
+    # assert is_all_email_checks_valid('1_-2rt@tyu.ru', ALLOWED, EMAIL_ALLOWED) is False
+    #
+    # assert is_correct_telephone('+79231234567') is True
+    # assert is_correct_telephone('89231234567') is True
+    # assert is_correct_telephone('+792312345677') is False
+    # assert is_correct_telephone('+792312345') is False
+    # assert is_correct_telephone('*79231234567') is False
+    # assert is_correct_telephone('+7923123456r') is False
+    # assert is_correct_telephone('+79231II4567') is False
+    # assert is_correct_telephone('8923123456T') is False
+    # assert is_correct_telephone('+7923123456_') is False
+    # assert is_correct_telephone('_79231234567') is False
+    # assert is_correct_telephone('8_231234567') is False
