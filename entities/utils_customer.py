@@ -39,13 +39,12 @@ email checking --------------------------------
 
 
 def is_standard_email(value: str, allowed: str):
-    if not ('@' in value and '.' in value):
-        raise ValueError(
-            f'must contain 1= @ in the middle and \'.\' in the second part, after @ and at least one character after')
-    if not all([value.count('@') == 1,
-                '.' in value.split('@')[1][1:],  # dot in 2 parts after character
-                value[:1] in allowed,
-                value[-1:] in allowed]):
+    flag = True
+    if value.count('@') == 1:
+        flag = not all(['.' in value.split('@')[1][1:],  # dot in 2 parts after character
+                        value[:1] in allowed,
+                        value[-1:] in allowed])
+    if flag:
         raise ValueError(
             f'must contain 1= @ in the middle and \'.\' in the second part, after @ and at least one character after')
 
@@ -67,9 +66,10 @@ def is_all_email_checks_valid(value: str, allowed: str, email_allowed):
     is_correct_chars_email(value, email_allowed)
     is_2unsuitable_chars_email(value)
 
-    """
-    telephone checking --------------------------------
-    """
+
+"""
+telephone checking --------------------------------
+"""
 
 
 def is_correct_telephone(value: str):
@@ -80,5 +80,3 @@ def is_correct_telephone(value: str):
 
 if __name__ == '__main__':
     is_correct_telephone('+79991231234')
-
-
