@@ -65,10 +65,8 @@ class Customer:
 
     @telephone.setter
     def telephone(self, telephone: str):
-        if u_c.is_correct_telephone(telephone):
-            self._telephone = telephone
-        else:
-            raise ValueError(f'telephone = wrong format : +79990004444 or 89990004444')
+        u_c.is_correct_telephone(telephone)
+        self._telephone = telephone
 
     @property
     def address(self):
