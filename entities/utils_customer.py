@@ -38,11 +38,16 @@ email checking --------------------------------
 """
 
 
-def is_standard_email(value: str, allowed: str) -> bool:
-    return all([value.count('@') == 1,
+def is_standard_email(value: str, allowed: str):
+    if not ('@' in value and '.' in value):
+        raise ValueError(
+            f'must contain 1= @ in the middle and \'.\' in the second part, after @ and at least one character after')
+    if not all([value.count('@') == 1,
                 '.' in value.split('@')[1][1:],  # dot in 2 parts after character
                 value[:1] in allowed,
-                value[-1:] in allowed])
+                value[-1:] in allowed]):
+        raise ValueError(
+            f'must contain 1= @ in the middle and \'.\' in the second part, after @ and at least one character after')
 
 
 def is_correct_chars_email(value: str, email_allowed: str) -> bool:
@@ -78,8 +83,7 @@ def is_correct_telephone(value: str) -> bool:
 
 
 if __name__ == '__main__':
-    pass
-
+    is_standard_email('ssh@rr.ru', ALLOWED)
 
     #
     # assert is_correct_telephone('+79231234567') is True

@@ -45,10 +45,8 @@ class Customer:
 
     @email.setter
     def email(self, email: str):
-        if u_c.is_all_email_checks_valid(email, ALLOWED, EMAIL_ALLOWED):
-            self._email = email
-        else:
-            raise ValueError(f'Only allowed in email: {EMAIL_ALLOWED}')
+        u_c.is_all_email_checks_valid(email, ALLOWED, EMAIL_ALLOWED)
+        self._email = email
 
     @property
     def password(self):
