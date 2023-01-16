@@ -50,27 +50,26 @@ def is_standard_email(value: str, allowed: str):
             f'must contain 1= @ in the middle and \'.\' in the second part, after @ and at least one character after')
 
 
-def is_correct_chars_email(value: str, email_allowed: str) -> bool:
-    return all(n in email_allowed for n in value)
+def is_correct_chars_email(value: str, email_allowed: str):
+    for n in value:
+        if n not in email_allowed:
+            raise ValueError('Invalid email chars')
 
 
-def is_2unsuitable_chars_email(value: str) -> bool:
-    """Function returns false if 2 characters together"""
-    res = []
+def is_2unsuitable_chars_email(value: str):
     for it in range(len(value) - 1):
-        res.append(not (value[it] in '._-' and value[it + 1] in '._-'))
-    return all(res)
+        if value[it] in '._-' and value[it + 1] in '._-':
+            raise ValueError('Invalid email chars, __ -- .. ')
 
 
-def is_all_email_checks_valid(value: str, allowed: str, email_allowed) -> bool:
-    return all([is_standard_email(value, allowed),
-                is_correct_chars_email(value, email_allowed),
-                is_2unsuitable_chars_email(value)])
+def is_all_email_checks_valid(value: str, allowed: str, email_allowed):
+    is_standard_email(value, allowed)
+    is_correct_chars_email(value, email_allowed)
+    is_2unsuitable_chars_email(value)
 
-
-"""
-telephone checking --------------------------------
-"""
+    """
+    telephone checking --------------------------------
+    """
 
 
 def is_correct_telephone(value: str) -> bool:
@@ -83,7 +82,7 @@ def is_correct_telephone(value: str) -> bool:
 
 
 if __name__ == '__main__':
-    is_standard_email('ssh@rr.ru', ALLOWED)
+    is_2unsuitable_chars_email('ыв')
 
     #
     # assert is_correct_telephone('+79231234567') is True
