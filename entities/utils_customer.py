@@ -72,27 +72,13 @@ def is_all_email_checks_valid(value: str, allowed: str, email_allowed):
     """
 
 
-def is_correct_telephone(value: str) -> bool:
-    if len(value) == 12 and value[0] == '+' and value[1:].isdigit():
-        return True
-    elif len(value) == 11 and value.isdigit():
-        return True
-    else:
-        return False
+def is_correct_telephone(value: str):
+    if not any([len(value) == 12 and value[0] == '+' and value[1:].isdigit(),
+                len(value) == 11 and value.isdigit()]):
+        raise ValueError('Invalid number only allowed +79991112222 or 89991112222')
 
 
 if __name__ == '__main__':
-    is_2unsuitable_chars_email('ыв')
+    is_correct_telephone('+79991231234')
 
-    #
-    # assert is_correct_telephone('+79231234567') is True
-    # assert is_correct_telephone('89231234567') is True
-    # assert is_correct_telephone('+792312345677') is False
-    # assert is_correct_telephone('+792312345') is False
-    # assert is_correct_telephone('*79231234567') is False
-    # assert is_correct_telephone('+7923123456r') is False
-    # assert is_correct_telephone('+79231II4567') is False
-    # assert is_correct_telephone('8923123456T') is False
-    # assert is_correct_telephone('+7923123456_') is False
-    # assert is_correct_telephone('_79231234567') is False
-    # assert is_correct_telephone('8_231234567') is False
+
