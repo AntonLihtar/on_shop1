@@ -1,6 +1,7 @@
 from string import ascii_letters, digits
 
 from utils_customer import validate_all_string_checks as all_str
+from utils_product import validator_description as v_des, validator_price as v_pr
 
 """
 This module stores product information
@@ -24,10 +25,8 @@ class Product:
 
     @name.setter
     def name(self, name: str):
-        if all_str(name, ALLOWED):
-            self.__name = name
-        else:
-            raise ValueError(f'Only allowed in name: {ALLOWED}')
+        all_str(name, ALLOWED)
+        self.__name = name
 
     @property
     def description(self):
@@ -35,10 +34,8 @@ class Product:
 
     @description.setter
     def description(self, description: str):
-        if len(description) > 2:
-            self.__description = description
-        else:
-            raise ValueError(f'len address < 3')
+        v_des(description)
+        self.__description = description
 
     @property
     def price(self):
@@ -46,14 +43,11 @@ class Product:
 
     @price.setter
     def price(self, price: int):
-        if type(price) is int and price > 0:
-            self.__price = price
-        else:
-            raise ValueError(f'only target positive numbers are allowed')
+        v_pr(price)
+        self.__price = price
 
 
 if __name__ == '__main__':
     prod1 = Product('Luk', 'prostoi, green luk', 30)
     prod2 = Product('yuk_ 1', 'prostoi_ *StEp* green luk', 500)
     prod3 = Product('kir1-1', 'prostoi, green // test // luk', 3000)
-

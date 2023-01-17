@@ -60,4 +60,4 @@ def test_telephone_chars8():
 
 
 if __name__ == '__main__':
-    pass
+    pytest.main()
