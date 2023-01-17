@@ -9,5 +9,7 @@ def validator_description(value: str):
 
 
 def validator_price(value: int):
-    if not (type(value) is int and value > 0):
+    if type(value) != int:
+        raise TypeError('wrong type, needed int')
+    if value < 1:
         raise ValueError(f'only target positive numbers are allowed')
