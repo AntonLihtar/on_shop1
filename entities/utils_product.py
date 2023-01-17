@@ -2,6 +2,8 @@
 
 
 def validator_description(value: str):
+    if type(value) != str:
+        raise TypeError('wrong type, needed str')
     if len(value) < 3:
         raise ValueError(f'len address < 3')
 
